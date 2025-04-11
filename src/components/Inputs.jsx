@@ -9,7 +9,9 @@ export default function Inputs({onChangeInput}) {
   });
 
   function handleOnChange(e) {
+   
     const { name, value } = e.target;
+    if (value < 1 && value !== "") return alert("0 and negative numbers are not allowed");
     setInput(prevInput => ({
       ...prevInput,
       [name]: value
@@ -26,16 +28,20 @@ export default function Inputs({onChangeInput}) {
           <input
             name="initialInvestment"
             onChange={handleOnChange}
+            min={1}
             type="number"
             value={input.initialInvestment}
+            required
           />
 
           <label htmlFor="expectedReturn">Expected Return</label>
           <input
             name="expectedReturn"
             onChange={handleOnChange}
+            min={1}
             type="number"
             value={input.expectedReturn}
+            required
           />
         </div>
 
@@ -44,16 +50,20 @@ export default function Inputs({onChangeInput}) {
           <input
             name="annualInvestment"
             onChange={handleOnChange}
+            min={1}
             type="number"
             value={input.annualInvestment}
+            required
           />
 
           <label htmlFor="duration">Duration</label>
           <input
             name="duration"
             onChange={handleOnChange}
+            min={1}
             type="number"
             value={input.duration}
+            required
           />
         </div>
       </div>
